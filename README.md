@@ -1,5 +1,7 @@
 # javascript-intermediate
 This repository is shall document my progress in learning intermediate Javascript concepts
+Accessing pop-up window
+
 let newWin = window.open("about:blank","hello","width=200,height=200");
 newWin.document.write("Hello, world!");
 // This opens a window with the specified dimensions and message "Hello, World!"
@@ -7,6 +9,7 @@ let newWin = window.open("about:blank","hello","width=200,height=200");
 newWin.document.write(<script>window.opener.document.body.innerHTML = 'Test'<\/script>);
 // window.opener: refers to the parent window that opened the new window
 // window.opener.document.body: Access the <body> element of the parent window
+// .innerHTML = 'Test': This sets the content of the parent window's <body> element to the string "Test".
 
 Same origin concept 
 URLs have the same origin if they have the same protocol, domain and port
@@ -26,3 +29,21 @@ console.log(e)
 // On the second tab, type the what is below 
 localStorage.setItem('a','b')
 // This will create an event whereby when a user clicks on the second tab it displays storageEvent information such as the new value, old value and URL from which the trigger occured. This is used=fule since it can be used to control a user by changing certain browser properties upon clicking or perfoming an action.
+
+<iframe src = "http://example.com" id = "iframe"></iframe>
+<script>
+  iframe.onload = function (){
+    let iframeWindow = iframe.contentWindow
+    // We get the reference inside of inner window
+    try {let doc = iframe.contentDocument; // error}
+         catch(e){alert(e); //security error due to another origin}
+    // we can't read URL of page in iframe
+    try {let href = iframe.contentWindow.location.href; // error
+        // Can't read URL from location object}
+    catch(e){alert(e); // security error}
+    // we can write into location (therefore something else into iframe)
+    iframe.contentWindow.location = '/'; // Ok
+    iframe.onload = null; // clear handler not to run after location change
+  };
+</script>
+
