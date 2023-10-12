@@ -47,3 +47,27 @@ localStorage.setItem('a','b')
   };
 </script>
 
+<iframe src = "/" id = "iframe"></iframe>
+<script>
+  iframe.onload = function(){
+    // just do anything
+    iframe.contentDocument.body.prepend("Hello, World!");</script>
+  }
+
+iframe: Wrong document pitfall
+<script>
+  let oldDoc = iframe.contentDocument;
+  iframe.onload = function(){
+    let newDoc = iframe.contentDocument;
+    alert(oldDoc == newDoc);
+  } // false
+</script>
+<script>
+  let oldDoc = iframe.contentWindow;
+  // every 100 ms check if the document is the new one
+  let timer = setInterval(() => {
+    let newDoc = iframe.contentDocument;
+    if(newDoc == oldDoc) return;
+    alert("New document is here!")
+    clearInterval(timer)};100);
+</script>
