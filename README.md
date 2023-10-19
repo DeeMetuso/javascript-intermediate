@@ -71,3 +71,12 @@ iframe: Wrong document pitfall
     alert("New document is here!")
     clearInterval(timer)};100);
 </script>
+
+Node.js
+
+Node.js is an open-source, server-side runtime environment that allows developers to run JavaScript code on the server. 
+It is built on the V8 JavaScript engine and provides an event-driven, non-blocking I/O model, making it well-suited for building scalable and real-time applications.
+It is used for various purposes, including building web servers, creating command-line tools, developing APIs, and building networked applications. 
+It's particularly popular for building scalable and high-performance web applications.
+
+Node.js can perform a wide range of tasks, such as handling HTTP requests, reading and writing files, interacting with databases, running server-side logic for web applications, and more.
